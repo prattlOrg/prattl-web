@@ -6,10 +6,12 @@ import (
 	"net/http"
 )
 
-func InitializePageRoutes() {
+func InitializePageRoutes() *http.ServeMux {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", indexHandler)
+	mux.Handle("/", middleware(mux))
+	return mux
 }
 
 var IndexTemplates = []string{
@@ -18,6 +20,7 @@ var IndexTemplates = []string{
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Printf("in handler")
 	tmpl := template.Must(template.ParseFiles(IndexTemplates...))
 
 	err := tmpl.Execute(w, nil)

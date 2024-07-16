@@ -9,8 +9,8 @@ RUN go build
 FROM alpine
 RUN adduser -S -D -H -h /app appuser
 USER appuser
-COPY --from=builder /build/prattl-web /app/
+COPY --from=builder /build/prattl_web /app/
 COPY public/ /app/public
 WORKDIR /app
-CMD ["./prattl-web"]
+CMD ["./prattl_web"]
 
