@@ -10,7 +10,7 @@ func InitializePageRoutes() *http.ServeMux {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", indexHandler)
-	mux.Handle("/", middleware(mux))
+	http.Handle("/", middleware(mux))
 	return mux
 }
 
