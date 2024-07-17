@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"prattl_web/src/routes"
+	"prattl_web/routes"
 )
 
 func main() {
