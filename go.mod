@@ -1,3 +1,3 @@
-module prattl-web
+module prattl_web
 
 go 1.21.3
