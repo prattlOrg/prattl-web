@@ -25,7 +25,6 @@ var ErrTemplates = []string{
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		// http.NotFound(w, r)
 		tmpl := template.Must(template.ParseFiles(ErrTemplates...))
 		err := tmpl.Execute(w, nil)
 		if err != nil {
@@ -41,11 +40,3 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
-
-// func notFoundHandler(w http.ResponseWriter, r *http.Request) {
-// 	tmpl := template.Must(template.ParseFiles("public/html/pages/404.html"))
-// 	err := tmpl.Execute(w, nil)
-// 	if err != nil {
-// 		http.Error(w, err.Error(), http.StatusInternalServerError)
-// 	}
-// }

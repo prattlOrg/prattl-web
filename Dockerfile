@@ -2,7 +2,7 @@
 FROM golang:1.21.3-alpine AS builder
 RUN mkdir /build
 ADD go.mod go.sum main.go /build/
-ADD src/ /build/src/
+ADD routes/ /build/routes/
 WORKDIR /build
 RUN go build
 
