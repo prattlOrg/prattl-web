@@ -22,9 +22,23 @@ var IndexTemplates = []string{
 	"public/html/layout.html",
 }
 
-func indexHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles(IndexTemplates...))
+var ErrTemplates = []string{
+	"public/html/index.html",
+	"public/html/404.html",
+}
 
+func indexHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		// http.NotFound(w, r)
+		tmpl := template.Must(template.ParseFiles(ErrTemplates...))
+		err := tmpl.Execute(w, nil)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+		return
+	}
+
+	tmpl := template.Must(template.ParseFiles(IndexTemplates...))
 	err := tmpl.Execute(w, nil)
 	if err != nil {
 		fmt.Printf("ERROR: %v\n", err.Error())

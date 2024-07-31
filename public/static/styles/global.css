@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
+
 :root {
-  --jet: #3a2b2a;
+  --jet: #2a2b2a;
+  --cool-white: #f4f3ff;
   --sunset: #e6c79c;
   --hooker-green: #618986;
   --razzmatazz: #db3069;
@@ -7,5 +11,13 @@
 
 html,
 body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
   background-color: var(--jet);
+  font-family: "Inconsolata";
+}
+
+.lilita {
+  font-family: "Lilita One";
 }
