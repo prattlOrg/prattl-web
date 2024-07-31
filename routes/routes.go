@@ -18,11 +18,23 @@ var IndexTemplates = []string{
 	"public/html/index.html",
 	"public/html/layout.html",
 }
+var ErrTemplates = []string{
+	"public/html/index.html",
+	"public/html/404.html",
+}
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("in handler")
-	tmpl := template.Must(template.ParseFiles(IndexTemplates...))
+	if r.URL.Path != "/" {
+		// http.NotFound(w, r)
+		tmpl := template.Must(template.ParseFiles(ErrTemplates...))
+		err := tmpl.Execute(w, nil)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+		}
+		return
+	}
 
+	tmpl := template.Must(template.ParseFiles(IndexTemplates...))
 	err := tmpl.Execute(w, nil)
 	if err != nil {
 		fmt.Printf("ERROR: %v\n", err.Error())
@@ -30,10 +42,10 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func notFoundHandler(w http.ResponseWriter, r *http.Request) {
-	tmpl := template.Must(template.ParseFiles("public/html/pages/404.html"))
-	err := tmpl.Execute(w, nil)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-	}
-}
+// func notFoundHandler(w http.ResponseWriter, r *http.Request) {
+// 	tmpl := template.Must(template.ParseFiles("public/html/pages/404.html"))
+// 	err := tmpl.Execute(w, nil)
+// 	if err != nil {
+// 		http.Error(w, err.Error(), http.StatusInternalServerError)
+// 	}
+// }

@@ -10,7 +10,7 @@ import (
 
 func main() {
 	mux := routes.InitializePageRoutes()
-	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("public/static"))))
+	mux.Handle("/public/", http.StripPrefix("/public/", http.FileServer(http.Dir("public/"))))
 	port := envPortOr("3000")
 	fmt.Println("Listening on port ", port)
 	log.Fatal(http.ListenAndServe(port, mux))
