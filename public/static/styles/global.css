@@ -4,3 +4,8 @@
   --hooker-green: #618986;
   --razzmatazz: #db3069;
 }
+
+html,
+body {
+  background-color: var(--jet);
+}

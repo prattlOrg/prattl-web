@@ -11,6 +11,9 @@ func InitializePageRoutes() *http.ServeMux {
 
 	mux.HandleFunc("/", indexHandler)
 	http.Handle("/", middleware(mux))
+	// mux.NotFoundHandler = http.HandlerFunc(notFoundHandler)
+
+	// http.NotFoundHandler = notFoundHandler
 	return mux
 }
 
@@ -20,7 +23,6 @@ var IndexTemplates = []string{
 }
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("in handler")
 	tmpl := template.Must(template.ParseFiles(IndexTemplates...))
 
 	err := tmpl.Execute(w, nil)
@@ -30,7 +32,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func notFoundHandler(w http.ResponseWriter, r *http.Request) {
+func notFoundHandler(w http.ResponseWriter, _ *http.Request) {
 	tmpl := template.Must(template.ParseFiles("public/html/pages/404.html"))
 	err := tmpl.Execute(w, nil)
 	if err != nil {

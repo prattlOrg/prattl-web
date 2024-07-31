@@ -1,4 +1,9 @@
 {{ define "layout" }}
-<div>LAYOUT</div>
+<div>
+  <header>
+    <h1>prattl</h1>
+    <img src="static/assets/logo.png"></img>
+  </header>
+</div>
 <div id="route-content" hx-get="{{.Path}}{{.Params}}"></div>
 {{ end }}
