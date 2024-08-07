@@ -1,5 +1,5 @@
 {{ define "layout" }}
-<div x-style="flex; flex-col; w:100%; h:100%; overflow:hidden; justify-content:space-between;">
+<div x-style="flex; flex-col; w:100%; h:100%; overflow-x:hidden; overflow-y:auto; justify-content:space-between;">
   <header x-style="grid; place-items:center; mt:2rem; ">
     <div x-style="p:1.5rem; radius:pill;  bg-color:@sunset;">
       <img width="250px"src="static/assets/logo.png"></img>
@@ -8,6 +8,7 @@
     <p x-style="color:@cool-white; text:md;">
       A cli tool for creating audio transcriptions locally
     </p>
+    <img width="900px" src="static/assets/prattldemo.gif"></img>
   </header>
   <footer x-style="flex; justify-content:right; align-self:bottom; m:0.5rem;">
     <a target="_blank" href="https://github.com/benleem/prattl">
