@@ -31,3 +31,41 @@ main {
 .inconsolata {
 	font-family: "Inconsolata";
 }
+
+.markdown {
+	color: var(--cool-white);
+	width: 100%;
+	max-width: 900px;
+	margin: auto;
+}
+
+.markdown > .head {
+	color: var(--razzmatazz);
+	font-weight: 800;
+}
+
+.markdown > h1 {
+	font-size: 2rem;
+}
+
+.markdown > h2 {
+	font-size: 1.75rem;
+}
+
+.markdown > ol {
+	list-style-position: inside;
+}
+
+code {
+	color: var(--jet);
+	font-style: italic;
+	background-color: var(--sunset);
+	padding-left: 0.3rem;
+	padding-right: 0.3rem;
+	border-radius: 0.2rem;
+}
+
+/* .markdown > code {
+	white-space: pre;
+	color: var(--sunset);
+} */

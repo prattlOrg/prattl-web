@@ -13,10 +13,6 @@ import (
 	"github.com/yuin/goldmark/renderer/html"
 )
 
-type PageData struct {
-	Markdown string
-}
-
 func InitializePageRoutes() *http.ServeMux {
 	mux := http.NewServeMux()
 
@@ -43,7 +39,10 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
+	renderHome(w)
+}
 
+func renderHome(w http.ResponseWriter) {
 	md, err := convertMarkdown()
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -56,6 +55,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("ERROR: %v\n", err.Error())
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+
 }
 
 func convertMarkdown() (string, error) {
@@ -67,6 +67,7 @@ func convertMarkdown() (string, error) {
 		goldmark.WithExtensions(extension.GFM, extension.Typographer),
 		goldmark.WithParserOptions(
 			parser.WithAutoHeadingID(),
+			parser.WithAttribute(),
 		),
 		goldmark.WithRendererOptions(
 			html.WithHardWraps(),

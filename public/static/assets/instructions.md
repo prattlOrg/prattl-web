@@ -1,8 +1,8 @@
-# prattl
+# Prerequisites {class="head"}
 
-CLI tool for transcription
+ffmpeg
 
-## Get Started
+# Get Started {class="head"}
 
 1. Clone repository
 2. In the base directory, run `/pip_install.sh` to get python dependencies (found in `internal/python-libs/requirements.txt`) installed to `internal/python-libs/data`
