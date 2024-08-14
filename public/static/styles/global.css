@@ -3,6 +3,7 @@
 
 :root {
 	--jet: #2a2b2a;
+	--jet-light: #3f403f;
 	--cool-white: #f4f3ff;
 	--sunset: #e6c79c;
 	--hooker-green: #618986;
@@ -32,11 +33,16 @@ main {
 	font-family: "Inconsolata";
 }
 
+/* MARKDOWN STYLING */
+
 .markdown {
+	padding: 1rem;
+	border-radius: 0.5rem;
 	color: var(--cool-white);
 	width: 100%;
 	max-width: 900px;
 	margin: auto;
+	background-color: var(--jet-light);
 }
 
 .markdown > .head {
@@ -64,8 +70,3 @@ code {
 	padding-right: 0.3rem;
 	border-radius: 0.2rem;
 }
-
-/* .markdown > code {
-	white-space: pre;
-	color: var(--sunset);
-} */
