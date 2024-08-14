@@ -1,5 +1,5 @@
 {{ define "layout" }}
-    <header x-style="grid; place-items:center; my:2rem; ">
+    <header x-style="grid; place-items:center; mt:2rem;">
         <div x-style="p:1.5rem; radius:pill;  bg-color:@sunset;">
             <img width="250px"src="static/assets/logo.png"></img>
         </div>
@@ -8,16 +8,19 @@
             A cli tool for creating audio transcriptions locally
         </p>
     </header>
-    <section class="markdown" x-style="">
-        {{ template "markdown" .}}
+    <section x-style="max-w:900px; w:100%; mx:auto; py:2rem;">
+        <img width="100%" x-style="display:block;" src="static/assets/prattldemo.gif"></img>
     </section>
-    <footer x-style="flex; justify-content:right; align-self:bottom; m:1rem; gap: 0.5rem;">
+    <section class="markdown">
+    {{ template "markdown" .}}
+    </section>
+    <footer x-style="flex; justify-content:right; align-self:bottom; p:1rem; gap:0.5rem;">
         <a download="prattl" href="static/assets/instructions.md" x-style='margin:none;' >
             <img x-style='transform.hover:scale(1.1); transition:all ease-in-out 200ms; display:block;' src="static/assets/download.svg" alt="download">
         </a>
         <a target="_blank" href="https://github.com/benleem/prattl" x-style='margin:none;' >
             <img x-style='transform.hover:scale(1.1); transition:all ease-in-out 200ms; display:block;' src="static/assets/github-mark.svg" alt="github">
         </a>
-  </footer>
+    </footer>
 {{ end }}
 
