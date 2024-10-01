@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 	"strings"
@@ -21,6 +22,7 @@ func middleware(h http.Handler) http.Handler {
 				filteredParts = append(filteredParts, strings.TrimSpace(part))
 			}
 		}
+		fmt.Println(parts)
 
 		// payment routes do not need to come from htmx elements
 		if len(filteredParts) > 0 && filteredParts[0] == "payment" {

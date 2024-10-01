@@ -1,9 +1,16 @@
 package routes
 
 import (
+	"bytes"
 	"fmt"
 	"html/template"
 	"net/http"
+	"os"
+
+	"github.com/yuin/goldmark"
+	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/parser"
+	"github.com/yuin/goldmark/renderer/html"
 )
 
 func InitializePageRoutes() *http.ServeMux {
@@ -11,9 +18,6 @@ func InitializePageRoutes() *http.ServeMux {
 
 	mux.HandleFunc("/", indexHandler)
 	http.Handle("/", middleware(mux))
-	// mux.NotFoundHandler = http.HandlerFunc(notFoundHandler)
-
-	// http.NotFoundHandler = notFoundHandler
 	return mux
 }
 
@@ -21,7 +25,6 @@ var IndexTemplates = []string{
 	"public/html/index.html",
 	"public/html/layout.html",
 }
-
 var ErrTemplates = []string{
 	"public/html/index.html",
 	"public/html/404.html",
@@ -29,7 +32,6 @@ var ErrTemplates = []string{
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
-		// http.NotFound(w, r)
 		tmpl := template.Must(template.ParseFiles(ErrTemplates...))
 		err := tmpl.Execute(w, nil)
 		if err != nil {
@@ -37,19 +39,45 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		return
 	}
+	renderHome(w)
+}
 
+func renderHome(w http.ResponseWriter) {
+	md, err := convertMarkdown()
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 	tmpl := template.Must(template.ParseFiles(IndexTemplates...))
-	err := tmpl.Execute(w, nil)
+	tmpl.New("markdown")
+	template.Must(tmpl.Lookup("markdown").Parse(md))
+	err = tmpl.Execute(w, nil)
 	if err != nil {
 		fmt.Printf("ERROR: %v\n", err.Error())
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
+
 }
 
-func notFoundHandler(w http.ResponseWriter, _ *http.Request) {
-	tmpl := template.Must(template.ParseFiles("public/html/pages/404.html"))
-	err := tmpl.Execute(w, nil)
+func convertMarkdown() (string, error) {
+	source, err := os.ReadFile("public/static/assets/instructions.md")
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return "", err
 	}
+	md := goldmark.New(
+		goldmark.WithExtensions(extension.GFM, extension.Typographer),
+		goldmark.WithParserOptions(
+			parser.WithAutoHeadingID(),
+			parser.WithAttribute(),
+			parser.WithInlineParsers(),
+		),
+		goldmark.WithRendererOptions(
+			html.WithHardWraps(),
+		),
+	)
+	var buf bytes.Buffer
+	if err := md.Convert(source, &buf); err != nil {
+		return "", err
+	}
+	result := buf.String()
+	return result, nil
 }
