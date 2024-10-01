@@ -4,10 +4,12 @@
 :root {
 	--jet: #2a2b2a;
 	--jet-light: #3f403f;
+	--jet-lighter: #555555;
 	--cool-white: #f4f3ff;
 	--sunset: #e6c79c;
 	--hooker-green: #618986;
 	--razzmatazz: #db3069;
+	--razzmatazz-light: #db306940;
 }
 
 * {
@@ -23,6 +25,15 @@ main {
 	height: 100%;
 	background-color: var(--jet);
 	font-family: "Inconsolata";
+	color: var(--cool-white);
+}
+
+a,  a:visited{
+	width: max-content;
+	color: var(--hooker-green);
+}
+a:hover {
+	color: var(--sunset);
 }
 
 .lilita {
@@ -34,10 +45,17 @@ main {
 }
 
 /* MARKDOWN STYLING */
+.markdown-container{
+	/* padding: 0 1.5rem 1.5rem 1.5rem; */
+	padding-bottom: 5rem;
+}
 
 .markdown {
-	padding: 1rem;
-	border-radius: 0.5rem;
+	padding: 1.5rem;
+	padding-top: 0;
+	border-radius: 1rem;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
 	color: var(--cool-white);
 	width: 100%;
 	max-width: 900px;
@@ -45,27 +63,55 @@ main {
 	background-color: var(--jet-light);
 }
 
-.markdown > .head {
+.markdown > h2, h3 {
 	color: var(--razzmatazz);
-	font-weight: 800;
-}
-
-.markdown > h1 {
-	font-size: 2rem;
 }
 
 .markdown > h2 {
-	font-size: 1.75rem;
+	margin: 1rem 0 1rem 0;
+	border-bottom: 1px solid var(--jet-lighter);
+	/* https://davidwalsh.name/hex-opacity */
+	font-size: 2rem;
+	font-weight: 800;
+}
+.markdown > h2:first-child {
+	margin-top: 0;
+	/* padding-top: 1rem; */
+	/* border-top: 1px solid var(--jet-lighter); */
 }
 
-.markdown > ol {
+.markdown > h3 {
+	padding: 0.75rem 0 0.1rem 0;
+	font-size: 1.45rem;
+	font-weight: 700;
+}
+
+.markdown > #oscpu-architecture-support {
+	padding-top: 0 ;
+	
+}
+
+.markdown > ul, ol {
 	list-style-position: inside;
 }
 
+.markdown > blockquote {
+	margin-top: 0.75rem;
+	padding: 0.75rem;
+	background-color: var(--jet-lighter);
+	border-left: 0.5rem solid var(--hooker-green);
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+strong > em{
+	color: var(--sunset);
+
+}
+
 code {
-	color: var(--jet);
-	font-style: italic;
-	background-color: var(--sunset);
+	color: var(--sunset);
+	background-color: var(--jet-lighter);
 	padding-left: 0.3rem;
 	padding-right: 0.3rem;
 	border-radius: 0.2rem;

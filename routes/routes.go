@@ -68,6 +68,7 @@ func convertMarkdown() (string, error) {
 		goldmark.WithParserOptions(
 			parser.WithAutoHeadingID(),
 			parser.WithAttribute(),
+			parser.WithInlineParsers(),
 		),
 		goldmark.WithRendererOptions(
 			html.WithHardWraps(),
