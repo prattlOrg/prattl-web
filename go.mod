@@ -1,4 +1,4 @@
-module prattl_web
+module github.com/prattlOrg/prattl-web
 
 go 1.21.3
 

@@ -22,7 +22,7 @@
 
 ### Get Started
 
-1. [Download](https://github.com/benleem/prattl/releases) (or [build](https://github.com/benleem/prattl)) binary to chosen location
+1. [Download](https://github.com/prattl-org/prattl/releases) (or [build](https://github.com/prattl-org/prattl)) binary to chosen location
 2. Include the path of the binary in `$PATH`
 3. Run `prattl prepare` to install necessary python dependencies to `$HOME/.prattl` directory
 4. Prattl is ready to be used!
