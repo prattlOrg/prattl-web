@@ -4,6 +4,7 @@ const addTargetToMarkdown = () => {
 
   markdownAnchors.forEach((anchor, i) => {
     anchor.target = "_blank";
+    anchor.relList.add("noreferrer", "noopener");
   });
 };
 addTargetToMarkdown();

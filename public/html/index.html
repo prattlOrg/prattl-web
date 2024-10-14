@@ -1,31 +1,32 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
-		/>
-		<title>prattl</title>
-		<!-- HTMX -->
-		<script
-			src="https://unpkg.com/htmx.org@2.0.1"
-			integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
-			crossorigin="anonymous"
-		></script>
-		<!-- ASSEMBLER -->
-		<script src="https://unpkg.com/@asmcss/assembler/dist/assembler.min.js"></script>
-		<!-- ALPINE -->
-		<script
-			defer
-			src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
-		></script>
-		<script defer src="/static/scripts/index.js"></script>
-		<!-- CUSTOM CSS -->
-		<link rel="stylesheet" href="/static/styles/global.css" />
-	</head>
-	<body>
-		<main>{{ template "layout" . }}</main>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <title>prattl</title>
+    <link rel="icon" type="image/x-icon" href="static/assets/logo.png" />
+    <!-- HTMX -->
+    <script
+      src="https://unpkg.com/htmx.org@2.0.1"
+      integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
+      crossorigin="anonymous"
+    ></script>
+    <!-- ASSEMBLER -->
+    <script src="https://unpkg.com/@asmcss/assembler/dist/assembler.min.js"></script>
+    <!-- ALPINE -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script defer src="/static/scripts/index.js"></script>
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="/static/styles/global.css" />
+  </head>
+  <body>
+    <main>{{ template "layout" . }}</main>
+  </body>
 </html>
