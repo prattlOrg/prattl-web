@@ -1,6 +1,6 @@
 ## Features
 
-- Transcribe audio and output to stdout/json (supports multiple file input)
+- Transcribe audio and output to stdout in json format (supports multiple file input)
 - Helps with drafting captions for your editing workflow
 
 ### Prattl manages its own python distribution
