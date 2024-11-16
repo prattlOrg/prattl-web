@@ -51,9 +51,27 @@ the output will be:
 
 [ffmpeg](https://www.ffmpeg.org/) installed and included in `$PATH`
 
+<!-- > **_NOTE:_** This step can be skipped if you are using a supported package manager to install prattl -->
+<!--
+### Install
+
+Install with [Go](https://go.dev/):
+`go install github.com/prattlOrg/prattl@latest`
+
+Install on Windows with [Chocolatey](https://chocolatey.org/):
+
+`choco install prattl`
+
+Install on Mac/Linux with [Homebrew Taps](https://docs.brew.sh/Taps):
+
+`brew tap prattlOrg/prattl`
+`brew install prattl` -->
+
+<!-- .deb, .rpm, .apk, .ipk -->
+
 ### Get Started
 
-1. [Download](https://github.com/prattlOrg/prattl/releases) (or [build](https://github.com/prattlOrg/prattl/tree/main?tab=readme-ov-file#oscpu-architecture-support)) binary to chosen location
+1. Install (or [build](https://github.com/prattlOrg/prattl/tree/main?tab=readme-ov-file#oscpu-architecture-support)) binary to chosen location
 2. Include the path of the binary in `$PATH`
 3. Run `prattl prepare` to install necessary python dependencies to `$HOME/.prattl` directory
 4. Prattl is ready to be used!
